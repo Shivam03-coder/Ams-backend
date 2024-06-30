@@ -1,4 +1,4 @@
-import nodemailer, { createTransport } from "nodemailer";
+import nodemailer  from "nodemailer";
 import { appconfig } from "./appconfig.js";
 
 const transporter = nodemailer.createTransport({

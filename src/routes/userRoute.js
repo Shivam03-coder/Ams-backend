@@ -19,6 +19,7 @@ userRoutes.route("/register").post(userregisterController);
 userRoutes.route("/email-verify").post(useremailverifyController);
 userRoutes.route("/number-verify").post(usernumberverifyController);
 userRoutes.route("/user-login").post(userloginController);
+userRoutes.route("/user-logout").post(userlogoutController);
 userRoutes
   .route("/user-profile")
   .post(
@@ -26,7 +27,6 @@ userRoutes
     passport.authenticate("jwt", { session: false }),
     userprofileController
   );
-userRoutes.route("/user-logout").post(userlogoutController);
 userRoutes
   .route("/user-passwordChange")
   .post(

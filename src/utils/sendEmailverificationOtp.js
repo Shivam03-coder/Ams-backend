@@ -8,7 +8,7 @@ const sendEmailverificationOtp = async (newUser) => {
 
     await useremailVerifymodel.create({ userId: newUser._id, otp: OTP });
 
-    const otpVerificationLink = `${appconfig.APP_BASE_URL}/account/verify-email`;
+    console.log(newUser);
 
     const mailoptions = {
       from: appconfig.EMAIL_FROM,
@@ -16,16 +16,18 @@ const sendEmailverificationOtp = async (newUser) => {
       subject: "OTP - Verify your account", // Subject line
       html: `<h2>Dear ${newUser.fullname},</h2>
              <p>Thank you for registering on AMS </p>
-            <p>Use the following OTP to complete your verification process:${otpVerificationLink}</p>
-            <h2>OTP : ${OTP}</h2>
+            <h1>OTP : ${OTP}</h1>
             <p>This OTP is valid for 10 minutes.</p>`,
     };
 
-    transporter.sendMail(mailoptions, (err) => {
+    transporter.sendMail(mailoptions, (err, info) => {
       if (err) {
-        return console.log(err);
+        console.error("Error occurred while sending email:", err);
+        return;
       }
+      console.log("Email sent successfully:", info);
     });
+
     return OTP;
   } catch (error) {
     console.log(error);

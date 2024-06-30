@@ -1,6 +1,8 @@
 import useremailVerifymodel from "../../models/user_models/useremailVerifiymodel.js";
+import UserModel from "../../models/user_models/usermodel.js";
 import sendEmailverificationOtp from "../../utils/sendEmailverificationOtp.js";
 import sendNumberverificationOtp from "../../utils/sendNumberverificationOtp.js";
+
 
 const useremailverifyController = async (req, res) => {
   try {
