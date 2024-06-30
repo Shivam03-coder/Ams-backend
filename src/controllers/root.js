@@ -5,6 +5,7 @@ import userloginController from "./user_controllers/userloginController.js";
 import userprofileController from "./user_controllers/userprofileController.js";
 import userlogoutController from "./user_controllers/userlogoutController.js";
 import userpasswordChangeController from "./user_controllers/userpasswordChangeController.js";
+import userResetpasswordController from "./user_controllers/userResetpasswordController.js";
 
 export {
   useremailverifyController,
@@ -14,4 +15,5 @@ export {
   userprofileController,
   userlogoutController,
   userpasswordChangeController,
+  userResetpasswordController
 };
