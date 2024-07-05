@@ -3,6 +3,7 @@ import cookieParser from "cookie-parser";
 import cors from "cors";
 import "./config/passportjwtconfig.js";
 import { passport } from "./config/passportjwtconfig.js";
+import { appconfig } from "./config/appconfig.js";
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(passport.initialize());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "*",
+    origin: appconfig.APP_BASE_URL,
     credentials: true,
     optionsSuccessStatus: 200,
   })
