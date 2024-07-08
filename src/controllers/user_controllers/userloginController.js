@@ -9,9 +9,9 @@ const userloginController = async (req, res) => {
     const user = await UserModel.findOne({ email });
 
     if (!user) {
-      res.status(404).json({
+     ReturnDocument res.status(404).json({
         status: "failed",
-        message: `Invalid 123 email or password`,
+        message: `Invali email or password`,
       });
     }
 
@@ -37,17 +37,15 @@ const userloginController = async (req, res) => {
 
     setTokenscookies(res, accessToken, refreshToken);
 
+    // send isAuthenticated as cookie to user
+
+    res.cookie("isUserAuthentucated", user.isAuthenticated);
+
     // Response after user successfully login
 
     res.status(200).json({
       status: "success",
-      user: {
-        id: user._id,
-        name: user.fullname,
-        email: user.email,
-      },
-      isAuthenticated: user.isAuthenticated,
-      roles: user.roles[0],
+      message: "User login successfull",
     });
   } catch (error) {
     res.status(500).json({

@@ -3,7 +3,6 @@ import UserModel from "../../models/user_models/usermodel.js";
 import sendEmailverificationOtp from "../../utils/sendEmailverificationOtp.js";
 import sendNumberverificationOtp from "../../utils/sendNumberverificationOtp.js";
 
-
 const useremailverifyController = async (req, res) => {
   try {
     const { email, otp } = req.body;
@@ -16,6 +15,10 @@ const useremailverifyController = async (req, res) => {
         message: "Email is not registered !",
       });
     }
+
+    //send otp
+
+    sendEmailverificationOtp(userexisting);
 
     if (userexisting.isemailVerified) {
       return res.status(405).json({

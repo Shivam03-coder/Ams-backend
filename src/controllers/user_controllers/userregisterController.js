@@ -25,10 +25,8 @@ const userregisterController = async (req, res) => {
       password,
     });
 
-    sendEmailverificationOtp(createdUser);
-
     const newUser = await UserModel.findById(createdUser._id).select(
-      "-password -createdAt -updatedAt -__v"
+      "-password -isAuthenticated -isemailVerified  -isphoneNoVerified -phonenumber -createdAt -updatedAt -__v"
     );
 
     return res.status(200).json({
