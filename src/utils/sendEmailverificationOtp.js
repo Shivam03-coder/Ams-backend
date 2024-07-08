@@ -8,7 +8,6 @@ const sendEmailverificationOtp = async (newUser) => {
 
     await useremailVerifymodel.create({ userId: newUser._id, otp: OTP });
 
-    console.log(newUser);
 
     const mailoptions = {
       from: appconfig.EMAIL_FROM,
@@ -20,12 +19,11 @@ const sendEmailverificationOtp = async (newUser) => {
             <p>This OTP is valid for 10 minutes.</p>`,
     };
 
-    transporter.sendMail(mailoptions, (err, info) => {
+    transporter.sendMail(mailoptions, (err) => {
       if (err) {
         console.error("Error occurred while sending email:", err);
         return;
       }
-      console.log("Email sent successfully:", info);
     });
 
     return OTP;
